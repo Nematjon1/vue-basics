@@ -2,12 +2,15 @@
   <div class="container">
     <header>
       <!-- THis is named slot -->
-      <slot name="header"></slot>
+      <slot name="header" v-bind:user="user">
+        {{ user.firstname }}
+      </slot>
     </header>
     <!--
       Now we can use syntax to reach the slot
-        <template v-slot:header>
+        <template v-slot:header="slotProps">
           <h1>Here might be a page title</h1>
+          <h2>{{ slotProps.user.lastname }}</h2>
         </template>
     -->
     <main>
@@ -22,6 +25,14 @@
 
 <script>
   export default {
-    name: "SlotComponent"
+    name: "SlotComponent",
+    data() {
+      return {
+        user: {
+          firstname: "John",
+          lastname: "Doe"
+        }
+      };
+    }
   };
 </script>
