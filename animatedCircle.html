@@ -1,3 +1,4 @@
+<!-- Source of this code is https://codesandbox.io/s/distracted-raman-fyr4s?file=/index.html:1114-3152 -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -103,6 +104,26 @@
           }
         }
       });
+      function valueToPoint(value, index, total) {
+        var x = 0;
+        var y = -value * 0.9;
+        var angle = ((Math.PI * 2) / total) * index;
+        var cos = Math.cos(angle);
+        var sin = Math.sin(angle);
+        var tx = x * cos - y * sin + 100;
+        var ty = x * sin + y * cos + 100;
+        return { x: tx, y: ty };
+      }
+
+      function generatePoints(stats) {
+        var total = stats.length;
+        return stats
+          .map(function(stat, index) {
+            var point = valueToPoint(stat, index, total);
+            return point.x + "," + point.y;
+          })
+          .join(" ");
+      }
     </script>
   </body>
 </html>
