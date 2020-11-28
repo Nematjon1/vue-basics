@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic State Transitions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenLite.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+      svg {
+        display: block;
+      }
+      polygon {
+        fill: #41b883;
+      }
+      circle {
+        fill: transparent;
+        stroke: #35495e;
+      }
+      input[type="range"] {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <svg width="200" height="200">
+        <polygon :points="points"></polygon>
+        <circle cx="100" cy="100" r="90"></circle>
+      </svg>
+      <label>Sides: {{ sides }}</label>
+      <input type="range" min="3" max="500" v-model.number="sides" />
+      <label>Minimum Radius: {{ minRadius }}%</label>
+      <input type="range" min="0" max="90" v-model.number="minRadius" />
+      <label>Update Interval: {{ updateInterval }} milliseconds</label>
+      <input type="range" min="10" max="2000" v-model.number="updateInterval" />
+    </div>
+  </body>
+</html>
