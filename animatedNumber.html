@@ -1,0 +1,29 @@
+<!DOTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animated Numbers</title>
+    <script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
+    <script src="https://vue"></script>
+  </head>
+  <body>
+    <div id="example-7">
+      <input
+        v-model="colorQuery"
+        v-on:keyup.enter="updateColor"
+        placeholder="Enter a color"
+      >
+      <button v-on:click="updateColor">Update</button>
+      <p>Preview:</p>
+      <span
+        v-bind:style="{ backgroundColor: tweenedCSSColor }"
+        class="example-7-color-preview"
+      ></span>
+      <p>{{ tweenedCSSColor }}</p>
+    </div>
+  </body>
+</html>
+
+
+
