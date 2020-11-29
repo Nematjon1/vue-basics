@@ -12,8 +12,15 @@
     -->
     <a v-bind:href="url">example web-site</a>
     
-    <input type="date" ref="startDataIput" />
-    <input type="data" ref="endDataInput" />
+    <input type="date" ref="startDateIput" />
+    <input type="data" ref="endDateInput" />
+   
+    <my-component inline-template>
+      <div>
+        <p>These are compiled as the component's own template.</p>
+        <p>Not parent's transclusion content.</p>
+      </div>
+    </my-component>
   </div>
 </template>
 
