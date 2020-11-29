@@ -16,11 +16,25 @@
 
 <script>
   export default {
+  
+    // Provide will inject this property into all child components
+    // in any child use inject: ['providedDataName'] e.g. ["getAttr"]
+    provide: function () {
+      return {
+        getAttr: this.geAttr
+      }
+    },
     data() {
       return {
         someAttr: "",
         url: "https://example.com"
       };
+    },
+    
+    computed: {
+      getAttr() {
+        return this.someAttr;
+      }
     }
   }
 </script>
