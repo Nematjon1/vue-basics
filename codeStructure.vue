@@ -11,6 +11,9 @@
       "href" is an argument for "v-bind"
     -->
     <a v-bind:href="url">example web-site</a>
+    
+    <input type="date" ref="startDataIput" />
+    <input type="data" ref="endDataInput" />
   </div>
 </template>
 
@@ -35,6 +38,23 @@
       getAttr() {
         return this.someAttr;
       }
+    },
+    methods: {
+      // Assume we have Pikaday constructor
+      attachDatepicker: function (refName) {
+        var picker = new Pikaday({
+          field: this.$refs[refName],
+          format: 'YYYY-MM-DD'
+        })
+
+        this.$once('hook:beforeDestroy', function () {
+          picker.destroy()
+        })
+      }
+    },
+    mounted() {
+      this.attachDatepicker('startDateInput')
+      this.attachDatepicker('endDateInput')
     }
   }
 </script>
