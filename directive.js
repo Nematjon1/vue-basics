@@ -44,4 +44,28 @@ Vue.directive('pin', {
 
 new Vue({
   el: '#baseexample'
+});
+
+/**
+<div id="dynamicexample">
+  <h3>Scroll down inside this section ↓</h3>
+  <p v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</p>
+</div>
+**/
+
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    var s = (binding.arg == 'left' ? 'left' : 'top')
+    el.style[s] = binding.value + 'px'
+  }
+})
+
+new Vue({
+  el: '#dynamicexample',
+  data: function () {
+    return {
+      direction: 'left'
+    }
+  }
 })
