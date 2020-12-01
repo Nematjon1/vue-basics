@@ -27,3 +27,21 @@ new Vue({
     message: 'hello!'
   }
 });
+
+/**
+<div id="baseexample">
+  <p>Scroll down the page</p>
+  <p v-pin="200">Stick me 200px from the top of the page</p>
+</div>
+**/
+
+Vue.directive('pin', {
+  bind: function (el, binding, vnode) {
+    el.style.position = 'fixed'
+    el.style.top = binding.value + 'px'
+  }
+})
+
+new Vue({
+  el: '#baseexample'
+})
