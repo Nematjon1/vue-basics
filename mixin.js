@@ -39,3 +39,30 @@ new Vue({
     // => { msg: "goodbye", foo: "abcde", bar: "def" }
   }
 });
+
+var mixin2 = {
+  methods: {
+    foo: function () {
+      console.log('foo')
+    },
+    conflicting: function () {
+      console.log('from mixin definition')
+    }
+  }
+}
+
+var vm = new Vue({
+  mixins: [mixin2],
+  methods: {
+    bar: function () {
+      console.log('bar')
+    },
+    conflicting: function () {
+      console.log('from instance')
+    }
+  }
+})
+
+vm.foo() // => "foo"
+vm.bar() // => "bar"
+vm.conflicting() // => "from instance"
